@@ -25,8 +25,9 @@ jobs:
       - name: Update Index
         run: |
           helm repo index .
-          git config --global user.email "rohitthadani@duck.com"
-          git config --global user.name "Rohit Thadani"
-          git add index.yaml
-          git commit -m "Update chart index"
-          git push
+      - name: Update git
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          file_pattern: 'index.yaml'
+          commit_message: 'Update index'
+          
